@@ -1,0 +1,100 @@
+
+<style>
+  .container {
+    display: flex;
+    align-items: center;
+    justify-content: center
+  }
+  img {
+    max-width: 200%
+  }
+  .image {
+    flex-basis: 15%
+    
+    
+  }
+  .text {
+    font-size: 20px;
+    padding-left: 20px;
+  }
+</style>
+
+<body>
+<div class="container">
+  <div class="image">
+    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSXFxslqQ2ThdlNKMDuUo4Zg1jqfRdj_fkWt2OVH7NtlA1MIIBaJXBE8Dp3VcyliY23Hbk&usqp=CAU%22">
+  </div>
+  <div class="text">
+    <h1 [style.color] = "'darkorchid'">Contact Our</h1>
+    <h1>Customer Support Center</h1>
+  </div>
+</div>
+<br>
+<h2>Contact Information</h2>
+<h3>Please fill out your contact information below</h3>
+
+<div *ngIf="!nform" class="form-group"></div>
+<form [formGroup]="nform" >
+<div class="row">
+<div class="col">
+  <label for="Name" class="label">Name</label>
+  <input [class.is-invalid]="nform.get('name')?.invalid && nform.get('name')?.touched" type="text" class="form-control" placeholder="First name" formControlName="name">
+  <small [class.d-none]="nform.get('name')?.valid || nform.get('name')?.untouched"  class="text-danger">Name is required</small>
+</div>
+<div class="col">
+  <label for="" class="label"></label>
+  <input type="text" class="form-control" placeholder="Last name">
+</div>
+</div><br>
+
+
+<div class="form-group row">
+<label for="inputEmail3" class="label">Email</label>
+<div class="col">
+  <input type="email"  [class.is-invalid]="nform.get('email')?.invalid && nform.get('email')?.touched" class="form-control" id="inputEmail3" formControlName="email" >
+  <small [class.d-none]="nform.get('email')?.valid || nform.get('email')?.untouched" class="text-danger">Email is required</small>
+</div>
+</div><br>
+
+
+<div class="form-outline">
+<label class="form-label" for="typePhone">Phone</label>
+<input [class.is-invalid]="nform.get('phone')?.invalid && nform.get('phone')?.touched" type="tel" id="typePhone" class="form-control" formControlName="phone">
+<small [class.d-none]="nform.get('phone')?.valid || nform.get('phone')?.untouched" class="text-danger">Phone number is required</small>
+</div><br>
+
+
+
+<div class="form-group">
+  <label>City</label>
+  <input type="text" [class.is-invalid]="nform.get('city')?.invalid && nform.get('city')?.touched" class="form-control" formControlName="city">
+  <small [class.d-none]="nform.get('city')?.valid || nform.get('city')?.untouched" class="text-danger">City name is required</small>
+</div><br>
+
+<div class="form-row align-items-center">
+  <div class="col-auto my-1">
+    <label class="mr-sm-2" for="inlineFormCustomSelect">State</label><br>
+    <select class="custom-select mr-sm-2" id="inlineFormCustomSelect">
+      <option selected>Choose...</option>
+      <option value="1">Maharashtra</option>
+      <option value="2">Gujarat</option>
+      <option value="3">Uttar Pradesh</option>
+    </select>
+  </div>
+  </div><br>
+
+<div class="form-group">
+  <label>Zip code</label>
+  <input type="text" [class.is-invalid]="nform.get('zipcode')?.invalid && nform.get('zipcode')?.touched" class="form-control" formControlName="zipcode">
+  <small [class.d-none]="nform.get('zipcode')?.valid || nform.get('zipcode')?.untouched" class="text-danger">Zip code is required</small>
+</div><br>
+
+<div class="form-group">
+  <label>Comments</label>
+  <textarea class="form-control" rows="5" cols="20" formControlName="comments"></textarea>
+</div>
+
+<div class="text-center">
+<button type="button" class="btn btn-primary btn-lg" [disabled]="!nform.valid">Submit Form</button>
+</div>
+</form>
